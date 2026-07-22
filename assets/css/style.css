@@ -852,17 +852,19 @@ p{
 
 .impact-card h3{
 
-    color:#fff;
-
     font-size:3rem;
+    margin: 20px 0 10px;
 
-    margin-bottom:10px;
+     /* color:#1f2937; */
+     color: #0F172A;
+     line-height: 1.2;
 
 }
 
 .impact-card p{
 
-    color:#EAF7EC;
+    color:#181e25;
+    font-size:1rem;
 
 }
 

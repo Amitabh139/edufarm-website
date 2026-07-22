@@ -3,6 +3,7 @@
    Main JavaScript
 ====================================================== */
 
+console.log("script.js loaded");
 document.addEventListener("DOMContentLoaded", () => {
 
     // ===========================
@@ -166,10 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", revealOnScroll);
 
     revealOnScroll();
-
-});
-
-/* =====================================
+    /* =====================================
    COUNTER ANIMATION
 ===================================== */
 
@@ -200,6 +198,7 @@ const startCounter = () => {
                 counter.textContent = target.toLocaleString() + "+";
 
             }
+            
 
         };
 
@@ -213,21 +212,33 @@ const impactSection = document.querySelector(".impact");
 
 let counterStarted = false;
 
-window.addEventListener("scroll", () => {
+function checkImpact() {
 
     if (!impactSection || counterStarted) return;
 
     const top = impactSection.getBoundingClientRect().top;
+    console.log("Top:", top);
+console.log("Trigger Point:", window.innerHeight - 150);
 
     if (top < window.innerHeight - 150) {
 
         startCounter();
-
         counterStarted = true;
 
     }
+console.log("checkImpact fired");
+}
+
+window.addEventListener("scroll", checkImpact);
+console.log("Impact Section:", impactSection);
+console.log("Counters:", counters.length);
+console.log("Window Height:", window.innerHeight);
+// Check once immediately when the page loads
+checkImpact();
 
 });
+
+
 
 /* =====================================
    FOOTER
