@@ -3,7 +3,7 @@
    Main JavaScript
 ====================================================== */
 
-console.log("script.js loaded");
+// console.log("script.js loaded");
 document.addEventListener("DOMContentLoaded", () => {
 
     // ===========================
@@ -117,27 +117,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===========================
     // SMOOTH SCROLL
     // ===========================
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
-        anchor.addEventListener("click", function (e) {
+    anchor.addEventListener("click", function (e) {
 
-            const target = document.querySelector(this.getAttribute("href"));
+        const href = this.getAttribute("href");
 
-            if (!target) return;
+        // Ignore placeholder links
+        if (!href || href === "#") return;
 
-            e.preventDefault();
+        const target = document.querySelector(href);
 
-            target.scrollIntoView({
+        // Ignore if target section doesn't exist
+        if (!target) return;
 
-                behavior: "smooth",
-                block: "start"
+        e.preventDefault();
 
-            });
-
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
         });
 
     });
+
+});
+
 
     // ===========================
     // SCROLL REVEAL ANIMATION
@@ -217,8 +221,8 @@ function checkImpact() {
     if (!impactSection || counterStarted) return;
 
     const top = impactSection.getBoundingClientRect().top;
-    console.log("Top:", top);
-console.log("Trigger Point:", window.innerHeight - 150);
+//     console.log("Top:", top);
+// console.log("Trigger Point:", window.innerHeight - 150);
 
     if (top < window.innerHeight - 150) {
 
@@ -226,13 +230,13 @@ console.log("Trigger Point:", window.innerHeight - 150);
         counterStarted = true;
 
     }
-console.log("checkImpact fired");
+// console.log("checkImpact fired");
 }
 
 window.addEventListener("scroll", checkImpact);
-console.log("Impact Section:", impactSection);
-console.log("Counters:", counters.length);
-console.log("Window Height:", window.innerHeight);
+// console.log("Impact Section:", impactSection);
+// console.log("Counters:", counters.length);
+// console.log("Window Height:", window.innerHeight);
 // Check once immediately when the page loads
 checkImpact();
 
